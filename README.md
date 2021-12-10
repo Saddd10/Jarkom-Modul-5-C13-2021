@@ -329,3 +329,12 @@ Untuk melakukan pengecekan dapat mengikuti langkah berikut:
 1. Install netcat di server Jipangu dan Doriki: apt-get install netcat -y
 2. Pada Jipangu dan Doriki ketikkan: nc -l -p 80
 3. Pada foosha ketikkan: `nmap -p 80 192.190.0.18` atau `nmap -p 80 192.190.0.19`
+
+### 3. Membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan 
+
+### 4. Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
+
+### 5. Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.
+
+### 6. Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
+
