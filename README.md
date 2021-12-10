@@ -289,9 +289,15 @@ Pada node `Foosha` silahkan untuk menjalankan perintah berikut:
 iptables -t nat -A POSTROUTING -s 192.190.0.0/21 -o eth0 -j SNAT --to-source 192.168.122.46
 ```
 Keterangan:
+
 ```-t nat```: Menggunakan tabel NAT karena akan mengubah alamat asal dari paket
+
 ```-A POSTROUTING```: Menggunakan chain POSTROUTING karena mengubah asal paket setelah routing
+
 ```-s 192.190.0.0/21```: Mendifinisikan alamat asal dari paket yaitu semua alamat IP dari subnet 192.190.0.0/21
+
 ```-o eth0```: Paket keluar dari eth0 Foosha
+
 ```-j SNAT```: Menggunakan target SNAT untuk mengubah source atau alamat asal dari paket
+
 ```--to-s (ip eth0)```: Mendefinisikan IP source, di mana digunakan eth0 Foosha dengan rentang IP 192.168.122.0 sampai 192.168.122.255
