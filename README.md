@@ -328,4 +328,4 @@ Untuk melakukan pengecekan dapat mengikuti langkah berikut:
 
 1. Install netcat di server Jipangu dan Doriki: apt-get install netcat -y
 2. Pada Jipangu dan Doriki ketikkan: nc -l -p 80
-3. Pada foosha ketikkan: nmap -p 80 192.190.0.18 atau nmap -p 80 192.190.0.19
+3. Pada foosha ketikkan: `nmap -p 80 192.190.0.18` atau `nmap -p 80 192.190.0.19`
