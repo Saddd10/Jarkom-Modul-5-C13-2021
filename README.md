@@ -301,3 +301,31 @@ Keterangan:
 ```-j SNAT```: Menggunakan target SNAT untuk mengubah source atau alamat asal dari paket
 
 ```--to-s (ip eth0)```: Mendefinisikan IP source, di mana digunakan eth0 Foosha dengan rentang IP 192.168.122.0 sampai 192.168.122.255
+
+### 2. Drop akses di luar topologi pada DHCP dan DNS server
+
+Untuk melakukan drop akses dari luar topologi ke DHCP dan DNS server bisa dengan menjalankan perintah berikut:
+
+```
+iptables -A FORWARD -d 192.190.0.16/29 -i eth0 -p tcp --dport 80 -j DROP
+```
+
+Keterangan:
+
+```-A FORWARD```: Menggunakan chain FORWARD
+
+```-p tcp```: Mendefinisikan protokol yang digunakan, yaitu tcp
+
+```--dport 80```: Mendefinisikan port yang digunakan, yaitu 80 (HTTP)
+
+```-d 192.190.0.16/29```: Mendefinisikan alamat tujuan dari paket (DHCP dan DNS SERVER ) berada pada subnet 192.190.0.16/29
+
+```-i eth0```: Paket masuk dari eth0 Foosha
+
+```-j DROP```: Paket di-drop
+
+Untuk melakukan pengecekan dapat mengikuti langkah berikut:
+
+1. Install netcat di server Jipangu dan Doriki: apt-get install netcat -y
+2. Pada Jipangu dan Doriki ketikkan: nc -l -p 80
+3. Pada foosha ketikkan: nmap -p 80 192.190.0.18 atau nmap -p 80 192.190.0.19
