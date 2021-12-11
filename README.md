@@ -356,9 +356,19 @@ Keterangan:
 Untuk melakukan pengecekan dapat mengikuti langkah berikut:
 
 1. Masuk ke 4 node berbeda
-2. ping ke arah Jipangu/Doriki secara bersamaan
+2. Ping ke arah Jipangu/Doriki secara bersamaan
 
-### 4. Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
+![3a](https://user-images.githubusercontent.com/73766214/145672904-d6608381-76f9-4664-bb64-feb2dc663a70.jpg)
+
+![3b](https://user-images.githubusercontent.com/73766214/145672919-ff3913bc-e317-45ae-814c-2ef566b29d9d.jpg)
+
+![3c](https://user-images.githubusercontent.com/73766214/145672922-e58c748d-1137-4357-b990-e22846ab1ea2.jpg)
+
+![3d](https://user-images.githubusercontent.com/73766214/145672927-921dd4aa-720a-4290-b4a3-ad53cebe14a3.jpg)
+
+Terlihat dari node Blueno, Cipher dan Elena dapat melakukan ping ke Doriki/Jipangu, tetapi Fukurou tidak bisa melakukan ping karena maksimal 3 koneksi ke Doriki/Jipangu secara bersamaan.
+
+### 4. Akses dari subnet Blueno dan Cipher ke Doriki hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
 
 Untuk membuat Subnet Bluerno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis bisa dengan menjalankan perintah berikut:
 
@@ -398,6 +408,11 @@ Keterangan:
 
 ```-j REJECT```: Paket ditolak
 
+Apabila kita melakukan ping dari Blueno/Cipher ke Doriki di luar jam tersebut maka tidak bisa terkoneksi.
+
+![4a](https://user-images.githubusercontent.com/73766214/145673036-ea1eb406-f2f6-4aaa-a31c-e3d59e9b8580.jpg)
+
+![4b](https://user-images.githubusercontent.com/73766214/145673040-c4d8f98a-cb7d-4ab4-95ef-c94b637e0f71.jpg)
 
 ### 5. Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.
 
@@ -435,6 +450,11 @@ Keterangan:
 
 ```-j REJECT``` : Paket ditolak
 
+Apabila kita melakukan ping dari Elena/Fukurou ke Doriki di luar jam tersebut maka tidak bisa terkoneksi.
+
+![5a](https://user-images.githubusercontent.com/73766214/145673061-fe407c06-e10c-456f-a5b0-a21e1719578d.jpg)
+
+![5b](https://user-images.githubusercontent.com/73766214/145673064-05eea834-8028-44d7-8d71-c26798c5025f.jpg)
 
 ### 6. Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 
