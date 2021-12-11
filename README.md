@@ -341,11 +341,17 @@ iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j
 Keterangan:
 
 ```-A INPUT```: Menggunakan chain INPUT
+
 ```-p icmp```: Mendefinisikan protokol yang digunakan, yaitu ICMP (ping)
+
 ```-m connlimit```: Menggunakan rule connection limit
+
 ```--connlimit-above 3```: Limit yang ditangkap paket adalah di atas 3
+
 ```--connlimit-mask 0```: Hanya memperbolehkan 3 koneksi setiap subnet dalam satu waktu
+
 ```-j DROP```: Paket di-drop
+
 
 Untuk melakukan pengecekan dapat mengikuti langkah berikut:
 
@@ -373,15 +379,25 @@ iptables -A INPUT -s 192.190.0.128/25 -j REJECT
 Keterangan:
 
 ```A INPUT```: Menggunakan chain INPUT
+
 ```s 192.190.0.128/25```: Mendifinisikan alamat asal dari paket yaitu IP dari subnet Blueno
+
 ```s 192.190.4.0/22```: Mendifinisikan alamat asal dari paket yaitu IP dari subnet Chiper
+
 ```d 192.190.0.16/29```: Mendifinisikan alamat tujuan dari paket yaitu IP dari subnet Doriki
+
 ```m time```: Menggunakan rule time
+
 ```-timestart 07:00```: Mendefinisikan waktu mulai yaitu 07:00
+
 ```-timestop 15:00```: Mendefinisikan waktu berhenti yaitu 15:00
+
 ```--weekdays Mon,Tue,Wed,Thu```: Mendefinisikan hari yaitu Senin hingga Kamis
+
 ```-j ACCEPT```: Paket di-accept
+
 ```-j REJECT```: Paket ditolak
+
 
 ### 5. Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.
 
@@ -404,13 +420,21 @@ iptables -A INPUT -s 192.190.1.0/24 -j REJECT
 Keterangan:
 
 ```A INPUT``` : Menggunakan chain INPUT
+
 ```s 192.190.2.0/23``` : Mendifinisikan alamat asal dari paket yaitu IP dari subnet Elena
+
 ```s 192.190.1.0/24``` : Mendifinisikan alamat asal dari paket yaitu IP dari subnet Fukurou
+
 ```m time``` : Menggunakan rule time
+
 ```-timestart 15:01``` : Mendefinisikan waktu mulai yaitu 07:00
+
 ```-timestop 06:59``` : Mendefinisikan waktu berhenti yaitu 15:00
+
 ```-j ACCEPT``` : Paket di-accept
+
 ```-j REJECT``` : Paket ditolak
+
 
 ### 6. Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 
