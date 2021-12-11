@@ -326,9 +326,11 @@ Keterangan:
 
 Untuk melakukan pengecekan dapat mengikuti langkah berikut:
 
-1. Install netcat di server Jipangu dan Doriki: apt-get install netcat -y
-2. Pada Jipangu dan Doriki ketikkan: nc -l -p 80
-3. Pada foosha ketikkan: `nmap -p 80 192.190.0.18` atau `nmap -p 80 192.190.0.19`
+1. Ping pada node Doriki/Jipangu dengan perintah ```ping monta.if.its.ac.id```
+
+![2a](https://user-images.githubusercontent.com/73766214/145679993-38e4b898-b7c3-4932-8fbb-911dc796fcea.jpg)
+
+![2b](https://user-images.githubusercontent.com/73766214/145679996-4b80ccc9-e6e7-4a71-8168-12c96564d209.jpg)
 
 ### 3. Membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan 
 
@@ -458,4 +460,17 @@ Apabila kita melakukan ping dari Elena/Fukurou ke Doriki di luar jam tersebut ma
 
 ### 6. Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 
-Untuk bisa menjalankan soal diatas maka perlu dijalankan script berikut ini:
+Untuk bisa menjalankan soal diatas maka perlu dijalankan script berikut ini di route Guanhao:
+
+```
+iptables -t nat -A PREROUTING -d 192.190.0.16 -p tcp -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination 192.190.0.34
+iptables -t nat -A PREROUTING -d 192.190.0.16 -p tcp -j DNAT --to-destination 192.190.0.35
+iptables -t nat -A POSTROUTING -p tcp -d 192.190.0.34 -j SNAT --to-source 192.190.0.16
+iptables -t nat -A POSTROUTING -p tcp -d 192.190.0.35 -j SNAT --to-source 192.190.0.16
+```
+
+1. Install web server pada Maingate dan Jorge dengan command ```apt-get update``` dan ```apt-get install apache2 -y``` 
+2. Isi file ```index.html``` pada folder ```/var/www/html/```
+3. Coba di salah satu klien dengan perintah ```curl 192.190.0.16``` yaitu merupakan subnet DNS.
+
+
